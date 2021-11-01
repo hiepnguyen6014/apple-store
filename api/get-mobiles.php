@@ -1,14 +1,16 @@
 <?php
 //init json
-$myObj = new stdClass();
-// for 1 to 100
-for ($i = 1; $i <= 100; $i++) {
-    $myObj->name = "John";
-    $myObj->age = 30;
-    $myObj->city = "New York";
+$json = array();
+//set the status
+$json['status'] = true;
+//create arr have 5 attribute
+$data = array();
+for ($i = 0; $i < 100; $i++) {
+    $data[] = array(
+        'id' => $i,
+        'name' => 'name' . $i,
+        'price' => $i * 100
+    );
 }
-$myJSON = json_encode($myObj);
-
-echo $myJSON;
 
 ?>
