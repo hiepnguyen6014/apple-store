@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellphoneS</title>
+
+    <!-- link bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- link icons and fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;1,200;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- font-family: 'Nunito', sans-serif; -->
+    <style>
+         :root {
+            --main-font: 'Nunito', sans-serif;
+        }
+        
+        body {
+            font-family: var(--main-font);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .navbar {
+            height: 64px;
+        }
+        
+        .nav__search {
+            width: 400px !important;
+        }
+        
+        .nav__form-input {
+            border-radius: 0;
+            border: none;
+            display: inline-block;
+            position: relative;
+            left: -4px;
+            width: 100%;
+            padding-left: 2.3rem;
+        }
+        
+        .nav__form-btn {
+            border-radius: 0;
+            display: inline-block;
+        }
+        
+         ::placeholder {
+            color: #fff;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+        
+        .nav__feature {
+            display: flex;
+        }
+        
+        .nav__feature-item~.nav__feature-item {
+            margin-left: 15px;
+        }
+        
+        .nav__feature-text {
+            text-decoration: none;
+            color: white;
+            font-size: 0.8rem;
+            width: 54px;
+            display: inline-block;
+            margin-left: 3px;
+        }
+        
+        .nav__feature-item a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        a:hover {
+            text-decoration: none;
+        }
+        
+        input:focus {
+            outline: none !important;
+        }
+        
+        .search__icon {
+            position: absolute;
+            top: 0px;
+            left: -3px;
+            padding: 6px;
+            z-index: 1;
+            width: 38px;
+            cursor: pointer;
+        }
+        
+        .main__slider {
+            display: flex;
+            height: 336px;
+        }
+        
+        .left__slider {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.397);
+            border-radius: 1rem;
+            width: 200px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        
+        .left__slider__items {
+            padding-left: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .left__slider__item {
+            display: flex;
+            align-items: flex-end;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .left__slider__item:hover {
+            background-color: antiquewhite;
+            padding-left: 1rem;
+            transform: scale(1.02);
+        }
+        
+        .left__slider__item img {
+            width: 24px;
+            margin-right: 0.5rem;
+        }
+        
+        .mid__slider {
+            background-color: black;
+            width: calc(100% - 450px);
+            margin: 0 1rem;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+        }
+        
+        .mid__slider img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .right__slider {
+            width: 250px;
+            box-sizing: border-box;
+        }
+        
+        .right__slider img {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            margin-bottom: 0.5rem;
+            border-radius: 1rem;
+        }
+        
+        .card {
+            box-sizing: border-box;
+            min-width: 200px;
+            margin: 0.4rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: scale(1.01);
+        }
+        
+        .card-img-top {
+            padding: 1.2rem 0.5rem 0;
+        }
+        
+        .card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-height: 1rem;
+            height: 2rem;
+        }
+        
+        .card-text {
+            font-size: 0.7rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+            border: 1px solid rgba(214, 193, 193, 0.212);
+            border-radius: 0.2rem;
+            padding: 0.3rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            line-height: 1rem;
+            height: 3.5rem;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+            background-color: rgb(243, 244, 246);
+        }
+        
+        .card-price-old {
+            color: rgb(189, 142, 142);
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            line-height: 0.7rem;
+            text-decoration: line-through;
+            height: 11px;
+        }
+        
+        .card-price {
+            color: red;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        
+        .rating {
+            width: 100%;
+            height: 18px;
+        }
+        
+        .rating .star-outline {
+            display: inline-block;
+            background: url('imgs/star_outline_black_18dp.svg');
+            background-repeat: no-repeat;
+            height: 15px;
+            width: 15px;
+        }
+        
+        .rating .star-haft {
+            display: inline-block;
+            background: url('imgs/star_half_black_18dp.svg');
+            background-repeat: no-repeat;
+            height: 15px;
+            width: 15px;
+        }
+        
+        .rating .star-full {
+            display: inline-block;
+            background: url('imgs/star_purple500_black_18dp.svg');
+            background-repeat: no-repeat;
+            height: 15px;
+            width: 15px;
+        }
+        
+        .rating .rate-text {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-left: 0.5rem;
+        }
+        
+        .section__title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            text-transform: uppercase;
+        }
+        
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0.4rem 0;
+        }
+        
+        .card-body a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- navigation -->
+        <nav class="navbar navbar-expand-sm bg-danger navbar-danger fixed-top">
+            <div class="container">
+                <!-- Brand -->
+                <div class="nav__branch">
+                    <a class="nav__branch-brand" href="#">
+                        <img src="imgs/home_white.svg" alt="logo" width="35px">
+                    </a>
+                </div>
+
+                <div class="nav__search" style="position: relative;">
+                    <img class="search__icon" src="imgs/search_black_24dp.svg" alt="search" width="20px">
+                    <input class="form-control mr-sm-2 nav__form-input" type="text" placeholder="Bạn cần tìm gì?">
+                </div>
+
+                <div class="nav__feature">
+                    <div class="call nav__feature-item">
+                        <a href="tel:0986868686">
+                            <img src="imgs/call_white_48dp.svg" alt="call" width="35px">
+                            <span class="call__text nav__feature-text">Gọi mua hàng</span>
+                        </a>
+                    </div>
+                    <div class="shipping nav__feature-item">
+                        <a class="shipping__link" href="#">
+                            <img class="shipping__image" src="imgs/local_shipping_white_48dp.svg" alt="cart" width="35px">
+                            <span class="shipping__text nav__feature-text">Tra cứu đơn hàng</span>
+                        </a>
+                    </div>
+                    <div class="cart nav__feature-item">
+                        <a href="#" class="cart__link">
+                            <img class="cart__image" src="imgs/shopping_cart_white.svg" alt="cart" width="35px">
+                            <span class="cart__text nav__feature-text">Giỏ hàng</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation -->
+
+        <!-- main -->
+        <div class="main container" style="margin-top: 76px;">
+            <div class="main__slider">
+                <div class="left__slider">
+                    <ul class="left__slider__items">
+                        <li class="left__slider__item">
+                            <img src="imgs/phone_iphone_black_48dp.svg" alt="icon">
+                            <span class="item__text">Điện thoại</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/laptop_mac_black_24dp.svg" alt="icon">
+                            <span class="item__text">Laptop</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/headphones_black_24dp.svg" alt="icon">
+                            <span class="item__text">Âm thanh</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/desktop_mac_black_24dp.svg" alt="icon">
+                            <span class="item__text">Màn hình</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/tablet_mac_black_24dp.svg" alt="icon">
+                            <span class="item__text">Tablet</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/watch_black_24dp.svg" alt="icon">
+                            <span class="item__text">Đồng hồ</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/sim_card_black_24dp.svg" alt="icon">
+                            <span class="item__text">Sim thẻ</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/handyman_black_24dp.svg" alt="icon">
+                            <span class="item__text">Dụng cụ</span>
+                        </li>
+
+                        <li class="left__slider__item">
+                            <img src="imgs/power_black_24dp.svg" alt="icon">
+                            <span class="item__text">Phụ kiện</span>
+                        </li>
+                        <li class="left__slider__item">
+                            <img src="imgs/feed_black_24dp.svg" alt="icon">
+                            <span class="item__text">Tin công nghệ</span>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="mid__slider">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block" src="imgs/mid_slide.jpg" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="imgs/mid_slide1.jpg" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block" src="imgs/mid_slide2.jpg" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="right__slider">
+                    <img src="imgs/right_slide.jpg" alt="one">
+                    <img src="imgs/right_slide1.jpg" alt="one">
+                    <img src="imgs/right_slide2.jpg" alt="one">
+                </div>
+            </div>
+
+            <div class="mobile">
+                <div class="title">
+                    <h2 class="section__title mobile__title">điện thoại</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">Iphone</button>
+                        <button class="btn btn-outline-info">Samsung</button>
+                        <button class="btn btn-outline-info">LG</button>
+                        <button class="btn btn-outline-info">Vsmart</button>
+                    </div>
+                </div>
+                <div class="main__category main__mobile">
+                    <div class="row" id="mobile-space">
+                        <!--
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price-old">20.000.000 đ</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                </div>
+
+            </div>
+            <div class="laptop">
+                <div class="title">
+                    <h2 class="section__title laptop__title">laptop</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">Mac</button>
+                        <button class="btn btn-outline-info">Asus</button>
+                        <button class="btn btn-outline-info">LG</button>
+                        <button class="btn btn-outline-info">Lenovo</button>
+                    </div>
+                </div>
+                <div class="main__category main__laptop">
+                    <div class="row" id="laptop-space">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end main -->
+
+        <!-- footer -->
+        <footer>
+
+        </footer>
+        <!-- end footer -->
+    </div>
+    <script>
+        (function renderMobile() {
+            const mobileSpace = document.querySelector('#mobile-space');
+
+            // random number 5 to 100
+
+            // create 10 mobile produce
+            for (let i = 0; i < 8; i++) {
+
+                const quantity = Math.floor(Math.random() * (100 - 5 + 1)) + 5;
+
+                const mobile = document.createElement('div');
+                mobile.classList.add('col-lg-3');
+                mobile.classList.add('col-md-4');
+                mobile.classList.add('col-sm-6');
+                mobile.classList.add('col-6');
+                mobile.classList.add('p-0');
+                mobile.innerHTML = `
+                <div class="card">
+                    <a href="#">
+                        <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-3">
+                        <a href="#">
+                            <p class="card-title">${quantity}</p>
+                        </a>
+                        <p class="card-price-old">${quantity} đ</p>
+                        <p class="card-price">${quantity} đ</p>
+                        <p class="card-text">${quantity}</p>
+                        <div class="rating">
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-haft"></i>
+                            <i class="star-outline"></i>
+                            <span class="rate-text">${quantity} đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+                mobileSpace.appendChild(mobile);
+            }
+        })();
+
+        (function renderLaptop() {
+            const laptopSpace = document.querySelector('#laptop-space');
+            // create 10 mobile produce
+            for (let i = 0; i < 8; i++) {
+
+                // random number 5 to 100
+                const quantity = Math.floor(Math.random() * (100 - 5 + 1)) + 5;
+
+                const laptop = document.createElement('div');
+                laptop.classList.add('col-lg-3');
+                laptop.classList.add('col-md-4');
+                laptop.classList.add('col-sm-6');
+                laptop.classList.add('col-6');
+                laptop.classList.add('p-0');
+                laptop.innerHTML = `
+                <div class="card">
+                    <a href="#">
+                        <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                    </a>
+                    <div class="card-body p-3">
+                        <a href="#">
+                            <p class="card-title">${quantity}</p>
+                        </a>
+                        <p class="card-price-old">${quantity} đ</p>
+                        <p class="card-price">${quantity} đ</p>
+                        <p class="card-text">${quantity}</p>
+                        <div class="rating">
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-full"></i>
+                            <i class="star-haft"></i>
+                            <i class="star-outline"></i>
+                            <span class="rate-text">${quantity} đánh giá</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+                laptopSpace.appendChild(laptop);
+            }
+        })();
+    </script>
+</body>
+
+</html>
