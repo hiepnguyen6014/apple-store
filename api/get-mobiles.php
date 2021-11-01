@@ -13,4 +13,8 @@ for ($i = 0; $i < 100; $i++) {
     );
 }
 
+$json['data'] = $data;
+
+echo json_encode($json);
+
 ?>
