@@ -63,6 +63,28 @@
             display: flex;
         }
         
+        .nav__feature-item {
+            position: relative;
+        }
+        
+        .cart__quantity {
+            position: absolute;
+            top: -5px;
+            left: 15px;
+            background: #fff;
+            border-radius: 50%;
+            width: auto;
+            height: 20px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-align: center;
+            line-height: 15px;
+            color: #000;
+            border: 3px solid #F00;
+            box-sizing: border-box;
+            padding: 0 3px;
+        }
+        
         .nav__feature-item~.nav__feature-item {
             margin-left: 15px;
         }
@@ -82,7 +104,7 @@
             justify-content: center;
         }
         
-        a:hover {
+        .car a:hover {
             text-decoration: none;
         }
         
@@ -110,7 +132,6 @@
             border-radius: 1rem;
             width: 200px;
             box-sizing: border-box;
-            overflow: hidden;
         }
         
         .left__slider__items {
@@ -120,19 +141,26 @@
         }
         
         .left__slider__item {
-            display: flex;
-            align-items: flex-end;
+            position: relative;
             padding: 0.3rem 0.6rem;
             font-size: 0.8rem;
             font-weight: 700;
-            cursor: pointer;
             transition: all 0.2s ease;
+            z-index: 5;
+        }
+        
+        .left__slider__item a {
+            display: inline-block;
+            color: black;
+            text-decoration: none;
+            width: 100%;
         }
         
         .left__slider__item:hover {
             background-color: antiquewhite;
             padding-left: 1rem;
             transform: scale(1.02);
+            z-index: 5;
         }
         
         .left__slider__item img {
@@ -147,11 +175,12 @@
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+            z-index: 1;
+            height: 100%;
         }
         
         .mid__slider img {
-            width: 100%;
-            height: 100%;
+            object-fit: contain;
         }
         
         .right__slider {
@@ -167,6 +196,7 @@
         }
         
         .card {
+            position: relative;
             box-sizing: border-box;
             min-width: 200px;
             margin: 0.4rem;
@@ -285,6 +315,81 @@
             color: black;
             text-decoration: none;
         }
+        
+        .card-discount {
+            position: absolute;
+            top: 5px;
+            left: -6px;
+            background-color: red;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.1rem 0.6rem;
+            border-top-right-radius: 1rem;
+            border-bottom-right-radius: 1rem;
+        }
+        
+        .card-discount::before {
+            content: "";
+            position: absolute;
+            top: 96%;
+            left: 1px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 4px 0 0;
+            transform: rotate(-90deg);
+            border-color: transparent rgb(255, 0, 0) transparent transparent;
+            z-index: 1;
+        }
+        
+        .left-arrow {
+            position: absolute;
+            display: inline-block;
+            top: 4px;
+            right: 1rem;
+            transform: initial;
+            background: url('imgs/navigate_before_black_18dp.svg');
+            background-size: cover;
+            cursor: pointer;
+            padding: 0.7rem;
+            width: 1rem;
+            height: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .left-arrow::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            display: block;
+            width: 40px;
+            height: 100%;
+        }
+        
+        .left__slider__item:hover .subslider__items {
+            display: block;
+        }
+        
+        .subslider__items {
+            display: none;
+            position: absolute;
+            list-style: none;
+            top: 0;
+            left: 100%;
+            padding-left: 0;
+            background-color: white;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transform: initial;
+            z-index: 5;
+        }
+        
+        .subslider__item {
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 
@@ -302,7 +407,7 @@
 
                 <div class="nav__search" style="position: relative;">
                     <img class="search__icon" src="imgs/search_black_24dp.svg" alt="search" width="20px">
-                    <input class="form-control mr-sm-2 nav__form-input" type="text" placeholder="Bạn cần tìm gì?">
+                    <input id="search" class="form-control mr-sm-2 nav__form-input" type="text" placeholder="Bạn cần tìm gì?">
                 </div>
 
                 <div class="nav__feature">
@@ -319,9 +424,9 @@
                         </a>
                     </div>
                     <div class="cart nav__feature-item">
+                        <span class="cart__quantity">9</span>
                         <a href="#" class="cart__link">
                             <img class="cart__image" src="imgs/shopping_cart_white.svg" alt="cart" width="35px">
-                            <span class="cart__text nav__feature-text">Giỏ hàng</span>
                         </a>
                     </div>
                 </div>
@@ -335,47 +440,236 @@
                 <div class="left__slider">
                     <ul class="left__slider__items">
                         <li class="left__slider__item">
-                            <img src="imgs/phone_iphone_black_48dp.svg" alt="icon">
-                            <span class="item__text">Điện thoại</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/phone_iphone_black_48dp.svg" alt="icon">
+                                <span class="item__text">Điện thoại</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Apple</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Samsung</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Xiaomi</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">OPPO</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Nokia</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Vsmart</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">ASUS</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Vivo</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/laptop_mac_black_24dp.svg" alt="icon">
-                            <span class="item__text">Laptop</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/laptop_mac_black_24dp.svg" alt="icon">
+                                <span class="item__text">Laptop</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/headphones_black_24dp.svg" alt="icon">
-                            <span class="item__text">Âm thanh</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/headphones_black_24dp.svg" alt="icon">
+                                <span class="item__text">Âm thanh</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/desktop_mac_black_24dp.svg" alt="icon">
-                            <span class="item__text">Màn hình</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/desktop_mac_black_24dp.svg" alt="icon">
+                                <span class="item__text">Màn hình</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/tablet_mac_black_24dp.svg" alt="icon">
-                            <span class="item__text">Tablet</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/tablet_mac_black_24dp.svg" alt="icon">
+                                <span class="item__text">Tablet</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/watch_black_24dp.svg" alt="icon">
-                            <span class="item__text">Đồng hồ</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/watch_black_24dp.svg" alt="icon">
+                                <span class="item__text">Đồng hồ</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/sim_card_black_24dp.svg" alt="icon">
-                            <span class="item__text">Sim thẻ</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/sim_card_black_24dp.svg" alt="icon">
+                                <span class="item__text">Sim thẻ</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/handyman_black_24dp.svg" alt="icon">
-                            <span class="item__text">Dụng cụ</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/handyman_black_24dp.svg" alt="icon">
+                                <span class="item__text">Dụng cụ</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
-
                         <li class="left__slider__item">
-                            <img src="imgs/power_black_24dp.svg" alt="icon">
-                            <span class="item__text">Phụ kiện</span>
+                            <i class="left-arrow"></i>
+                            <a href="#">
+                                <img src="imgs/power_black_24dp.svg" alt="icon">
+                                <span class="item__text">Phụ kiện</span>
+                            </a>
+                            <ul class="subslider__items">
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                                <li class="subslider__item">
+                                    <a href="#">Mac</a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="left__slider__item">
-                            <img src="imgs/feed_black_24dp.svg" alt="icon">
-                            <span class="item__text">Tin công nghệ</span>
+                            <a href="#">
+                                <img src="imgs/feed_black_24dp.svg" alt="icon">
+                                <span class="item__text">Tin công nghệ</span>
+                            </a>
                         </li>
-
                     </ul>
                 </div>
 
@@ -423,13 +717,15 @@
                         <button class="btn btn-outline-info">Samsung</button>
                         <button class="btn btn-outline-info">LG</button>
                         <button class="btn btn-outline-info">Vsmart</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
                     </div>
                 </div>
                 <div class="main__category main__mobile">
                     <div class="row" id="mobile-space">
-                        <!--
+
                         <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
                             <div class="card">
+                                <span class="card-discount"> Giảm 20%</span>
                                 <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
                                 <div class="card-body p-3">
                                     <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
@@ -437,19 +733,22 @@
                                     <p class="card-price">20.000.000 đ</p>
                                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                     <div class="rating">
-                                        <i class="star-outline"></i>
-                                        <i class="star-haft"></i>
                                         <i class="star-full"></i>
+                                        <i class="star-full"></i>
+                                        <i class="star-full"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-outline"></i>
                                         <span class="rate-text">10 đánh giá</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        -->
+
                     </div>
                 </div>
 
             </div>
+
             <div class="laptop">
                 <div class="title">
                     <h2 class="section__title laptop__title">laptop</h2>
@@ -458,6 +757,7 @@
                         <button class="btn btn-outline-info">Asus</button>
                         <button class="btn btn-outline-info">LG</button>
                         <button class="btn btn-outline-info">Lenovo</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
                     </div>
                 </div>
                 <div class="main__category main__laptop">
@@ -480,7 +780,139 @@
                         </div> -->
                     </div>
                 </div>
+            </div>
 
+            <div class="sound">
+                <div class="title">
+                    <h2 class="section__title sound__title">âm thanh</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">Loa</button>
+                        <button class="btn btn-outline-info">Loa Bluetooth</button>
+                        <button class="btn btn-outline-info">Tai nghe</button>
+                        <button class="btn btn-outline-info">Mic thu âm</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
+                    </div>
+                </div>
+                <div class="main__category main__sound">
+                    <div class="row" id="sound-space">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <span class="discout">-20%</span>
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="monitor">
+                <div class="title">
+                    <h2 class="section__title monitor__title">màn hình</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">ASUS</button>
+                        <button class="btn btn-outline-info">Samsung</button>
+                        <button class="btn btn-outline-info">LG</button>
+                        <button class="btn btn-outline-info">Dell</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
+                    </div>
+                </div>
+                <div class="main__category main__monitor">
+                    <div class="row" id="monitor-space">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tablet">
+                <div class="title">
+                    <h2 class="section__title tablet__title">tablet</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">iPad</button>
+                        <button class="btn btn-outline-info">Samsung</button>
+                        <button class="btn btn-outline-info">Lenovo</button>
+                        <button class="btn btn-outline-info">Xiaomi</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
+                    </div>
+                </div>
+                <div class="main__category main__tablet">
+                    <div class="row" id="tablet-space">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="watch">
+                <div class="title">
+                    <h2 class="section__title watch__title">đồng hồ</h2>
+                    <div class="section__title__category">
+                        <button class="btn btn-outline-info">ASUS</button>
+                        <button class="btn btn-outline-info">Samsung</button>
+                        <button class="btn btn-outline-info">LG</button>
+                        <button class="btn btn-outline-info">Dell</button>
+                        <button class="btn btn-outline-info">Xem tất cả</button>
+                    </div>
+                </div>
+                <div class="main__category main__watch">
+                    <div class="row" id="watch-space">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                            <div class="card">
+                                <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
+                                <div class="card-body p-3">
+                                    <p class="card-title">Iphone 13 Pro Max 256GB | Chính hãng VN/A</p>
+                                    <p class="card-price">20.000.000 đ</p>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <div class="rating">
+                                        <i class="star-outline"></i>
+                                        <i class="star-haft"></i>
+                                        <i class="star-full"></i>
+                                        <span class="rate-text">10 đánh giá</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
             </div>
         </div>
         <!-- end main -->
@@ -492,46 +924,91 @@
         <!-- end footer -->
     </div>
     <script>
+        function numberRateToString(number, numberRate) {
+            //get integer part
+            const integer = Math.floor(number);
+            //get decimal part
+            const decimal = number - integer;
+            //get number of stars
+            const stars = integer;
+            //get number of half stars
+            const halfStars = decimal > 0 ? 1 : 0;
+            //get number of empty stars
+            const emptyStars = 5 - (stars + halfStars);
+            //get html
+            let string = '';
+            for (let i = 0; i < stars; i++) {
+                string += '<i class="star-full"></i>\n';
+            }
+            for (let i = 0; i < halfStars; i++) {
+                string += '<i class="star-haft"></i>\n';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                string += '<i class="star-outline"></i>\n';
+            }
+            return string + `<span class="rate-text">${numberRate} đánh giá</span>`;
+        }
+
         (function renderMobile() {
-            const mobileSpace = document.querySelector('#mobile-space');
+            /* const API_URL = "api/get-mobiles.php";
+            //ajax request not query
+            let http = new XMLHttpRequest();
+            //header ajax
+            http.open("GET", API_URL, true);
+            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            http.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let responseText = JSON.parse(this.responseText);
+                        let html = "";
+                        responseText.data.forEach(function(item) {
+                            html += `
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                                <div class="card">
+                                    <img class="card-img-top" src="${item.image}" alt="Card image cap">
+                                    <div class="card-body p-3">
+                                        <p class="card-title">${item.name}</p>
+                                        <p class="card-price-old">${item.oldPrice} đ</p>
+                                        <p class="card-price">${item.price} đ</p>
+                                        <p class="card-text">${item.description}</p>
+                                        <div class="rating">
+                                            ${numberRateToString(item.rate, item.numberRate)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        });
+                        document.getElementById("mobile-space").innerHTML = html;
+                    }
+                }
+                //send header
 
-            // random number 5 to 100
-
+            http.send(); */
+            const laptopSpace = document.querySelector('#mobile-space');
             // create 10 mobile produce
+            let html = "";
             for (let i = 0; i < 8; i++) {
 
-                const quantity = Math.floor(Math.random() * (100 - 5 + 1)) + 5;
-
-                const mobile = document.createElement('div');
-                mobile.classList.add('col-lg-3');
-                mobile.classList.add('col-md-4');
-                mobile.classList.add('col-sm-6');
-                mobile.classList.add('col-6');
-                mobile.classList.add('p-0');
-                mobile.innerHTML = `
-                <div class="card">
-                    <a href="#">
+                // random number 5 to 100
+                const quantity = Math.floor(Math.random() * (100 - 5 + 1)) + 5;;
+                html += `
+                <div class="col-lg-3 col-md-4 col-sm-6 col-6 p-0">
+                    <div class="card">
+                        <span class="card-discount"> Giảm 20%</span>
                         <img class="card-img-top" src="imgs/iphone_13.jpg" alt="Card image cap">
-                    </a>
-                    <div class="card-body p-3">
-                        <a href="#">
-                            <p class="card-title">${quantity}</p>
-                        </a>
-                        <p class="card-price-old">${quantity} đ</p>
-                        <p class="card-price">${quantity} đ</p>
-                        <p class="card-text">${quantity}</p>
-                        <div class="rating">
-                            <i class="star-full"></i>
-                            <i class="star-full"></i>
-                            <i class="star-full"></i>
-                            <i class="star-haft"></i>
-                            <i class="star-outline"></i>
-                            <span class="rate-text">${quantity} đánh giá</span>
+                        <div class="card-body p-3">
+                            <p class="card-title">${quantity} đ</p>
+                            <p class="card-price-old">${quantity} đ</p>
+                            <p class="card-price">${quantity} đ</p>
+                            <p class="card-text">${quantity}</p>
+                            <div class="rating">
+                                ${numberRateToString(Math.random() * (5 - 1 + 1) + 1, quantity)}
+                            </div>
                         </div>
                     </div>
                 </div>
-            `;
-                mobileSpace.appendChild(mobile);
+                `;
+                laptopSpace.innerHTML = html;
             }
         })();
 

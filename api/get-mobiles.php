@@ -16,10 +16,11 @@ for ($i = 0; $i < 100; $i++) {
     $data[] = array(
         'id' => $i,
         'name' => $name,
-        'oldprice' => $old_price,
+        'oldPrice' => $old_price,
         'description' => $name,
         'rate' => 3.5,
         'price' => $price,
+        'numberRate' => $price,
         'image' => 'http://localhost/mobile/images/' . $i . '.jpg',
     );
 }
