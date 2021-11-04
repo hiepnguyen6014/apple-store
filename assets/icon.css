@@ -44,6 +44,12 @@
     background-size: contain;
 }
 
+.search-icon {
+    background: url(icons/search.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 .pc-icon {
     background: url(icons/pc.svg) no-repeat;
     background-position: center;
@@ -153,6 +159,35 @@
 
 .star-border-icon {
     background: url(icons/star_border.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.nav-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+}
+
+.support-icon {
+    background: url(icons/support.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.ship-icon {
+    background: url(icons/ship.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.cart-icon {
+    background: url(icons/cart.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.user-icon {
+    background: url(icons/user.svg) no-repeat;
     background-position: center;
     background-size: contain;
 }

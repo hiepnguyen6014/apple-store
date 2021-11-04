@@ -352,14 +352,11 @@
 }
 
 .header__navbar__item__wrapper__last {
-    width: 120%;
+    width: 130%;
     height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #cc2f40;
-    border-radius: 8px;
-    padding: 5px 0;
 }
 
 .header__navbar__item__link__icon__wrapper__last {
