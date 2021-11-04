@@ -325,11 +325,6 @@
     line-height: 1.2rem;
 }
 
-.header__navbar__item:last-child .header__navbar__item__link {
-    display: flex;
-    flex-direction: column;
-}
-
 .header__navbar__item__wrapper {
     width: 120%;
     height: 45px;
@@ -423,7 +418,7 @@
 /* Subnav second */
 
 
-/* Điện thoại */
+/* mobile */
 
 .slidebar__item__submenu__second {
     position: absolute;
@@ -442,7 +437,7 @@
 }
 
 
-/*  End Điện thoại */
+/*  ed mobile */
 
 
 /* PC */
