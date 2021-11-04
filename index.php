@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-        Header("Location: /index.html");
+        Header("Location: /home.html");
     ?>
 </body>
 </html>
