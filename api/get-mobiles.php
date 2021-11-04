@@ -1,4 +1,6 @@
 <?php
+
+header("Access-Control-Allow-Origin: *");
 //init json
 $json = array();
 //set the status
@@ -21,7 +23,8 @@ for ($i = 0; $i < 100; $i++) {
         'rate' => 3.5,
         'price' => $price,
         'numberRate' => $price,
-        'image' => 'http://localhost/mobile/images/' . $i . '.jpg',
+        'hotSale' => 1,
+        'image' => 'assets/img/product/phone1.webp'
     );
 }
 

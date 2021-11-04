@@ -1033,7 +1033,7 @@
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
-.flash__sale__product__promotion__info p {
+.flash__sale__product__promotion__info {
     font-size: 0.8rem;
     color: #444;
 }
@@ -1067,6 +1067,10 @@
     line-height: 1.3rem;
     font-weight: 700;
     color: #444;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .featured__phone__product__desc__price {
@@ -1137,29 +1141,26 @@
     background-color: #F3F4F6;
     padding: 5px;
     border-radius: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 0.2rem;
 }
 
 .featured__phone__product__promotion__info p {
     font-size: 0.8rem;
     color: #444;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .featured__phone__product__desc__rare {
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }
 
-.featured__phone__product__desc__rare__star i {
-    font-size: 0.6rem;
-    color: #dcc001;
-}
-
-.featured__phone__product__desc__rare__vote p {
+.featured__phone__product__desc__rare__vote {
     font-size: 0.7rem;
-    margin-top: 3px;
-    margin-left: 4px;
+    margin-left: 0.5rem;
 }
 
 
@@ -2516,7 +2517,7 @@
         margin: 0 10px 10px 0;
     }
     .tablet__block__navbar__height {
-        height: 80px;
+        height: 40px;
     }
     .tablet__block__bottom__navbar {
         position: fixed;
