@@ -1,4 +1,4 @@
-
+/*  */
 'use strict'
 /* validation */
 window.addEventListener('load', () => {
