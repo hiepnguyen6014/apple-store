@@ -14,7 +14,6 @@ window.addEventListener('load', () => {
     });
 }, false);
 
-
 /* Giảm số lượng */
 function reduce(li) {
     let ul = li.parentNode; /* ul */
