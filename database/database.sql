@@ -110,11 +110,12 @@ CREATE TABLE `tbl_product` (
   `id_product` int(255) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `oldPrice` float NOT NULL DEFAULT 0,
-  `newPrice` float NOT NULL DEFAULT 0,
+  `newprice` float NOT NULL DEFAULT 0,
+  `price` float NOT NULL DEFAULT 0,
   `rate` float NOT NULL DEFAULT 5,
   `hotSale` bit(1) NOT NULL DEFAULT 0,
   `image` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `product_register` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -122,7 +123,16 @@ CREATE TABLE `tbl_product` (
 --
 
 -- --------------------------------------------------------
+--
+-- Cấu trúc bảng cho bảng `percent_sale`
+--
+CREATE TABLE `percent_sale` (
+  `id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `id_product` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `percent` float COLLATE utf8_unicode_ci NOT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+-- --------------------------------------------------------
 --
 -- Cấu trúc bảng cho bảng `reset_token`
 --
@@ -148,73 +158,74 @@ INSERT INTO `reset_token` (`email`, `token`, `expire_on`) VALUES
 -- Cấu trúc bảng cho bảng `type product`
 --
 CREATE TABLE `tbl_type_product` (
-  `id_` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `expire_on` int(11) DEFAULT NULL
+  `id` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `id_product` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type_product` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `producer` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 
-
-
-
-
 --
--- Chỉ mục cho các bảng đã đổ
+-- Chỉ mục cho các bảng đã đổ 
 --
 
 --
 -- Chỉ mục cho bảng `comment`
 --
-ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `developer`
---
-ALTER TABLE `developer`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `hinhanh_ungdung`
---
-ALTER TABLE `hinhanh_ungdung`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `lichsu_napthe`
---
-ALTER TABLE `lichsu_napthe`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `napthe`
---
-ALTER TABLE `napthe`
-  ADD PRIMARY KEY (`id`);
-
---
+ALTER TABLE `tbl_user`
+  ADD PRIMARY KEY (`id_user`);
+  ADD UNIQUE KEY `email` (`email`);
+  --
 -- Chỉ mục cho bảng `reset_token`
 --
 ALTER TABLE `reset_token`
   ADD PRIMARY KEY (`email`);
 
 --
+--
+-- Chỉ mục cho bảng `developer`
+--
+ALTER TABLE `tbl_comment_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `hinhanh_ungdung`
+--
+ALTER TABLE `tbl_photo_product`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `lichsu_napthe`
+--
+ALTER TABLE `tbl_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `napthe`
+--
+ALTER TABLE `tbl_save_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `reset_token`
+--
+
 -- Chỉ mục cho bảng `tbl_user`
 --
-ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `email` (`email`);
+ALTER TABLE `tbl_product`
+  ADD PRIMARY KEY (`id_product`);
+  
 
 --
 -- Chỉ mục cho bảng `theloai`
 --
-ALTER TABLE `theloai`
+ALTER TABLE `percent_sale`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `ungdung`
 --
-ALTER TABLE `ungdung`
+ALTER TABLE `tbl_type_product`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -222,41 +233,46 @@ ALTER TABLE `ungdung`
 --
 
 --
--- AUTO_INCREMENT cho bảng `hinhanh_ungdung`
---
-ALTER TABLE `hinhanh_ungdung`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `lichsu_napthe`
---
-ALTER TABLE `lichsu_napthe`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `napthe`
---
-ALTER TABLE `napthe`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `theloai`
+-- AUTO_INCREMENT cho bảng `tbl_comment_product`
 --
-ALTER TABLE `theloai`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+ALTER TABLE `tbl_comment_product`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT cho bảng `ungdung`
+-- AUTO_INCREMENT cho bảng `tbl_photo_product`
 --
-ALTER TABLE `ungdung`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-COMMIT;
+ALTER TABLE `tbl_photo_product`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT cho bảng `tbl_cart`
+--
+ALTER TABLE `tbl_cart`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT cho bảng `tbl_save_cart`
+--
+ALTER TABLE `tbl_save_cart`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT cho bảng `tbl_product`
+--
+ALTER TABLE `tbl_product`
+  MODIFY `id_product` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT cho bảng `percent_sale`
+--
+ALTER TABLE `percent_sale`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT cho bảng `tbl_type_product`
+--
+ALTER TABLE `tbl_type_product`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 
 
