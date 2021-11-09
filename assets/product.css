@@ -24,8 +24,7 @@ body{
 }
 .detail-product__box-name 
 .cps-container
-.box-name__box-raiting{
-	color: #F59E0B;
+.box-name__box-raiting {
 	display: flex;
 	align-items: top;
 	margin: 0 10px 0 0;
@@ -35,6 +34,7 @@ body{
 .cps-container
 .box-name__box-raiting i{
 	margin: 0 3px 0 3px;
+	color: #F59E0B;
 }
 .detail-product__box-name
 .cps-container
@@ -67,7 +67,6 @@ body{
 .cps-container
 .box-name__box-raiting
 .rate_cmt{
-	color:black;
 	margin-left: 5px;
 }
 .box-info__price
@@ -119,7 +118,7 @@ body{
 }
 
 #slide-wrapper{
-	max-width: 500px;
+	max-width: 390px;
 	display: flex;
 	min-height: 100px;
 	align-items: center;
@@ -187,35 +186,77 @@ body{
 .price-new__detail{
 	display: inline-block;
 	font-weight: 700;
-	color: red
+	color: red;
+	float: left;
+	margin: 0!important;
+	line-height: 1.4;
 }
 .item
 .user-info
 .pos-price
 .price-old__detail{
 	display: inline-block;
-	font-size: 12px;
+	font-size: 0.8rem;
 	text-decoration: line-through;
+	line-height: 1.4;
+	margin: 0 0 0 10px;
+	float: left;
 }
 .item
 .user-info
 .box-name__box-raiting{
-	color: #F59E0B;
+	
 	display: flex;
 	/* align-items: top; */
-	margin: 0 10px 0 0;
+	margin: 10px 10px 0 0;
 	font-size: 12px;
+	float: left;
+	margin-top: 15px;
+}
+.item
+.user-info
+.box-name__box-raiting i{
+	color: #F59E0B;
+	font-size: 0.9rem;
 }
 .item
 .user-info{
 	margin-left: 11px;
+	margin-right: 11px;
+}
+
+.box-compatible{
+	float: left;
+	border: 1px solid red;
+	width: 100%;
+	border-radius: 8px;
+	margin-top: 15px;
+	font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+	color: red;
+	font-size: 0.9rem;
+	/* margin-left: 11px;
+	margin-right: 11px; */
+}
+
+.clear{
+	clear: both;
+}
+
+
+.title-row{
+	padding : 10px;
+	font-size: 1.5rem;
+	font-weight: 700;
 }
 
 
 /*  product */
 
 div.item{
-	width: 200px;
+	width: 235px;
+	height: 350px;
 	background-color: white;
 	/* margin: 15px 15px 0 0; */
 	text-align: center;
@@ -224,26 +265,26 @@ div.item{
 	box-shadow: rgb(60 64 67 / 10%) 0px 1px 2px 0px, rgb(60 64 67 / 15%) 0px 2px 6px 2px;
 	transition: .2s;
 	/* height: 200px; */
-	min-height: 260px;
+	
 }
 .item img{
 	width: 100%;
 }
 .item .user-info .title{
+	float: left;
 	margin-top: 4px;
 	font-weight: bold;
 	text-decoration: none;
 	color: black;
 	display: block;
 	overflow: hidden;
-	
+	font-size: 1rem;
+	text-align: center;
 }
 .item:hover{
 	box-shadow: 5px 8px 14px 2px rgba(0, 0, 0, 0.3) ;
 }
-.item .user-info .title{
-	font-size: 0.8rem;
-}
+
 .item img{
 	border-radius: 8px 8px 0 0;
 }
