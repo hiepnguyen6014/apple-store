@@ -15,7 +15,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./assets/css/product.css" type="text/css">
   <!-- link icons and fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,21 +66,21 @@
       <div class="container-fluid">
           <div class="row shadow-sm pb-3">
               <div class="col-lg-4 col-md-6 col-sm-6 justify-content-center">
-                <img id=featured src="images/iphone-13-pro-max-8_1_1.jpg" width="100%">
+                <img id=featured src="./assets/img/product/laptop0.webp" width="100%">
                 <div id="slide-wrapper" >
-                  <img id="slideLeft" class="arrow" src="images/arrow-left.png">
+                  <img id="slideLeft" class="arrow" src="./assets/img/arrow/arrow-right.png">
                   <div id="slider">
-                    <img class="thumbnail active" src="images/iphone-13-pro-max-8_1_1.jpg">
-                    <img class="thumbnail" src="images/mac.jpg">
-                    <img class="thumbnail" src="images/mac.jpg">
+                    <img class="thumbnail active" src="./assets/img/product/laptop0.webp">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
         
-                    <img class="thumbnail" src="images/mac.jpg">
-                    <img class="thumbnail" src="images/mac.jpg">
-                    <img class="thumbnail" src="images/mac.jpg">
-                    <img class="thumbnail" src="images/mac.jpg">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
+                    <img class="thumbnail" src="./assets/img/product/laptop0.webp">
                   </div>
         
-                  <img id="slideRight" class="arrow" src="images/arrow-right.png">
+                  <img id="slideRight" class="arrow" src="./assets/img/arrow/arrow-right.png">
                 </div>
               </div>
               
@@ -183,7 +183,7 @@
                 <div class="col-md-12">
                       <div class="item">
                         <a href="#" class="detail-item__similar">
-                          <img src="./images/product.jpg" alt="">
+                          <img src="./assets/img/product/laptop0.webp" alt="">
                         </a>
                           <div class="user-info">
                               <a href="#" class="detail-item__similar">
@@ -212,7 +212,7 @@
                 <div class="col-md-12">
                   <div class="item">
                     <a href="#" class="detail-item__similar">
-                      <img src="./images/product.jpg" alt="">
+                      <img src="./assets/img/product/laptop0.webp" alt="">
                     </a>
                       <div class="user-info">
                           <a href="#" class="detail-item__similar">
@@ -241,7 +241,7 @@
                 <div class="col-md-12">
                   <div class="item">
                     <a href="#" class="detail-item__similar">
-                      <img src="./images/product.jpg" alt="">
+                      <img src="./assets/img/product/laptop0.webp" alt="">
                     </a>
                       <div class="user-info">
                           <a href="#" class="detail-item__similar">
@@ -270,7 +270,7 @@
                 <div class="col-md-12">
                   <div class="item">
                     <a href="#" class="detail-item__similar">
-                      <img src="./images/product.jpg" alt="">
+                      <img src="./assets/img/product/laptop0.webp" alt="">
                     </a>
                       <div class="user-info">
                           <a href="#" class="detail-item__similar">
@@ -299,7 +299,7 @@
                   <div class="col-md-12">
                     <div class="item">
                       <a href="#" class="detail-item__similar">
-                        <img src="./images/product.jpg" alt="">
+                        <img src="./assets/img/product/laptop0.webp" alt="">
                       </a>
                         <div class="user-info">
                             <a href="#" class="detail-item__similar">
@@ -328,7 +328,7 @@
                   <div class="col-md-12">
                     <div class="item">
                       <a href="#" class="detail-item__similar">
-                        <img src="./images/product.jpg" alt="">
+                        <img src="./assets/img/product/laptop0.webp" alt="">
                       </a>
                         <div class="user-info">
                             <a href="#" class="detail-item__similar">
@@ -376,5 +376,5 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script type="text/javascript" src="./script.js"></script>
+<script type="text/javascript" src="./assets/js/product.js"></script>
 </html>
