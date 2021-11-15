@@ -25,6 +25,29 @@
             return array('code' => 0,'error' => '','data' => $data);
         }
     }
-    // code continue
-    //  here 
+    function getAllUser(){
+        $conn = open_database();
+        $sql = 'SELECT * FROM user';
+        $stm = $conn->prepare($sql);
+        
+        if (!$stm->execute()){
+            return array('code' => 1,'error' => 'Can not execute');
+        }
+        $result = $stm -> get_result();
+        $data = array();
+        while($row = $result -> fetch_assoc() ){
+            $data[] = $row;
+        }
+        return json_encode(array('code' => 0, 'data' => $data));
+    }
+    // function deleteUser($id){
+    //     $conn = open_database();
+    //     $sql = "delete from user where user_Id = ? ";
+    //     $stm = $conn->prepare($sql);
+    //     $stm -> bind_param('s',$id);
+    //     if (!$stm->execute()){
+    //         return array('code' => 1,'error' => 'Can not execute');
+    //     }
+    //     return array('code' => 0,'success' => 'Data deleted ');
+    // }
 ?>

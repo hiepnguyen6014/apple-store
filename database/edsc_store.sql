@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `name` varchar(100) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'Nguyen Van A',
   `email` varchar(100) NOT NULL UNIQUE,
   `phone` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `avatar` varchar(100) NOT NULL DEFAULT 'avatar.webp',
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
@@ -79,7 +80,8 @@ ALTER TABLE `cart`
 COMMIT;
 
 ALTER TABLE `cart`
-  ADD CONSTRAINT `fk_cart_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `fk_cart_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+  ON DELETE CASCADE;
 COMMIT;
 
 ALTER TABLE `product`
@@ -91,7 +93,8 @@ ALTER TABLE `comment`
 COMMIT;
 
 ALTER TABLE `comment`
-  ADD CONSTRAINT `fk_comment_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+  ADD CONSTRAINT `fk_comment_userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`)
+  ON DELETE CASCADE;
 COMMIT;
 
 -- DATA INSERT --
@@ -103,9 +106,9 @@ INSERT INTO `manufacturer`(`manufacturerId`, `name`) VALUES
 ('DEL','DELL'),
 ('MAC','Macbook');
 
-INSERT INTO `user`(`userId`, `username`, `password`, `name`, `email`, `phone`, `avatar`) VALUES
-('US1234','user1','user1','Nguyen Van A','sdfhsdfs@gmail.com','0801239123','avatar.webp'),
-('US1233','user2','user2','Nguyen Van A','sdfhsdfss@gmail.com','0801239123','avatar.webp');
+INSERT INTO `user`(`userId`, `username`, `password`, `name`, `email`, `phone`,`address`, `avatar`) VALUES
+('US1234','user1','user1','Nguyen Van A','sdfhsdfs@gmail.com','0801239123','Tp.HCM','avatar.webp'),
+('US1233','user2','user2','Nguyen Van A','sdfhsdfss@gmail.com','0801239123','Tp.HCM','avatar.webp');
 
 INSERT INTO `product`(`productId`, `name`, `description`, `newPrice`, `price`, `rate`, `manufacturerId`, `sale`, `image`) VALUES
 ('DT1','Iphone 13 Pro Max | 1TB','Tang mot em nguoi yeu',1200000,1000000,3.5,'DEL',1, 'iphone.webj'),
