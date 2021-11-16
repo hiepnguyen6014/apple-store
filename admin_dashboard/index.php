@@ -50,12 +50,12 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-fill"></i>
+                            <i class="bi bi-person-fill"><?=$_SESSION['name']?> </i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
                             <li>
-                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                                <a class="dropdown-item" href="../logout.php">Đăng xuất</a>
                             </li>
                         </ul>
                     </li>
@@ -100,8 +100,8 @@
                             <span>Đơn hàng</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" class="nav-link nav-link-custom px-3">
+                    <li class="<?php if(isset($_GET['page'])&& $_GET['page']=='user'){echo 'bg-secondary';}?>">
+                        <a href="?page=user" class="nav-link nav-link-custom px-3">
                             <span class="me-2"><i class="icon fas fa-user"></i></span>
                             <span>Tài khoản</span>
                         </a>
