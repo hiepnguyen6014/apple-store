@@ -8,8 +8,6 @@
     $getAllUsers = json_decode(getAllUser()) -> data; 
     
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -31,7 +29,10 @@
                 aria-controls="offcanvasExample">
                 <span class="navbar-toggler-icon" data-bs-target="#sidebar"></span>
             </button>
-            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="#">Frontendfunn</a>
+
+            <a class="navbar-brand me-auto ms-lg-0 ms-3 text-uppercase fw-bold" href="/">
+                <img width="260px" height="36px" style="object-fit: cover;" src="/assets/img/logo.png" alt="logo">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavBar"
                 aria-controls="topNavBar" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -39,7 +40,7 @@
             <div class="collapse navbar-collapse" id="topNavBar">
                 <form class="d-flex ms-auto my-3 my-lg-0">
                     <div class="input-group">
-                        <input class="form-control" type="search" placeholder="Search" aria-label="Search" />
+                        <input class="form-control" type="search" placeholder="Bạn muốn tìm gì?" aria-label="Search" />
                         <button class="btn btn-primary" type="submit">
                             <i class="bi bi-search"></i>
                         </button>
@@ -49,12 +50,13 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-fill"><?=$_SESSION['name'] ?></i>
+                            <i class="bi bi-person-fill"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="../logout.php">Log out</a></li>
-
+                            <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Đăng xuất</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -65,35 +67,17 @@
     <!-- offcanvas -->
     <div class="offcanvas offcanvas-start sidebar-nav bg-dark" tabindex="-1" id="sidebar">
         <div class="offcanvas-body p-0">
-            <nav class="navbar-dark">
+        <nav class="navbar-dark">
                 <ul class="navbar-nav">
                     <li>
-                        <div class="text-muted small fw-bold text-uppercase px-3">
-                            CORE
+                        <div class="text-muted small mt-2 fw-bold text-uppercase px-3">
+                            Trang chủ
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3 active">
-                            <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-3 active p-3">
-                            <span class="me-2"><i class="fas fa-store"></i></i></i></span>
-                            <span>Quản lí sản phẩm</span>
-                        </a>
-                    </li>
-                    <li class="<?php if(isset($_GET['page'])&& $_GET['page']=='user'){ echo 'bg-secondary';}?>">
-                        <a href="?page=user" class="nav-link px-3 active p-3">
-                            <span class="me-2"><i class="fas fa-users"></i></i></span>
-                            <span>Quản lí người dùng</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-3 active p-3">
-                            <span class="me-2"><i class="fas fa-bookmark"></i></i></i></span>
-                            <span>Quản lí đơn hàng</span>
+                        <a href="#" class="nav-link nav-link-custom px-3 active">
+                            <span class="me-2"><i class="fas fa-chart-line"></i></span>
+                            <span>Tổng quan</span>
                         </a>
                     </li>
                     <li class="my-4">
@@ -101,55 +85,29 @@
                     </li>
                     <li>
                         <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                            Interface
+                            Chức năng
                         </div>
                     </li>
                     <li>
-                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#layouts">
-                            <span class="me-2"><i class="bi bi-layout-split"></i></span>
-                            <span>Layouts</span>
-                            <span class="ms-auto">
-                                <span class="right-icon">
-                                    <i class="bi bi-chevron-down"></i>
-                                </span>
-                            </span>
+                        <a href="#" class="nav-link nav-link-custom px-3">
+                            <span class="me-2"><i class="icon fas fa-store"></i></span>
+                            <span>Sản phẩm</span>
                         </a>
-                        <div class="collapse" id="layouts">
-                            <ul class="navbar-nav ps-3">
-                                <li>
-                                    <a href="#" class="nav-link px-3">
-                                        <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                                        <span>Dashboard</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-book-fill"></i></span>
-                            <span>Pages</span>
+                        <a href="#" class="nav-link nav-link-custom px-3">
+                            <span class="me-2"><i class="icon fas fa-shipping-fast"></i></span>
+                            <span>Đơn hàng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link nav-link-custom px-3">
+                            <span class="me-2"><i class="icon fas fa-user"></i></span>
+                            <span>Tài khoản</span>
                         </a>
                     </li>
                     <li class="my-4">
                         <hr class="dropdown-divider bg-light" />
-                    </li>
-                    <li>
-                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                            Addons
-                        </div>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-graph-up"></i></span>
-                            <span>Charts</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-table"></i></span>
-                            <span>Tables</span>
-                        </a>
                     </li>
                 </ul>
             </nav>
@@ -338,5 +296,3 @@
     <script src="./js/dataTables.bootstrap5.min.js"></script>
     <script src="./js/script.js"></script>
 </body>
-
-</html>
