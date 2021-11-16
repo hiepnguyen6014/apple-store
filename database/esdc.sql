@@ -318,9 +318,9 @@ INSERT INTO `user` (`userId`, `username`, `password`, `name`, `email`, `phone`, 
 --
 -- Constraints for table `bill`
 --
-ALTER TABLE `bill`
-  ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`),
-  ADD CONSTRAINT `bill_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+-- ALTER TABLE `bill`
+--   ADD CONSTRAINT `bill_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`),
+--   ADD CONSTRAINT `bill_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
 
 --
 -- Constraints for table `bill_detail`
