@@ -50,7 +50,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            <i class="bi bi-person-fill"><?=$_SESSION['name']?> </i>
+                            <?=$_SESSION['name']?> <i class="bi bi-person-fill"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Thông tin tài khoản</a></li>

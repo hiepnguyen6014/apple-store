@@ -51,6 +51,32 @@ $(document).ready(function(){
 		dots: false,
 		arrows: true,
 		prevArrow:"<button type='button' class='slick-prev slick-arrow'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
-        nextArrow:"<button type='button' class='slick-next slick-arrow'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
+        nextArrow:"<button type='button' class='slick-next slick-arrow'><i class='fa fa-angle-right' aria-hidden='true'></i></button>",
+		responsive: [
+			{
+			  breakpoint: 1025,
+			  settings: {
+				slidesToShow: 4,
+			  },
+			},
+            {
+                breakpoint: 769,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  arrows : false,
+                  centerPadding: '70px',
+                  centerMode: true,
+                }
+            }, 
+            
+		]
 	  });
 });
