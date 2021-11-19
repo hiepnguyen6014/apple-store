@@ -6,8 +6,6 @@
         exit();
     }
     
-    
-    
 
 ?>
 
@@ -17,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
     <!-- style.css -->
-    <link rel="stylesheet" href="./assets/css/login.css">
+    
     <!-- boottrap 4 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -30,7 +28,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
+    <link rel="stylesheet" href="./assets/css/login1.css">
 </head>
+
 <?php
 $error = '';
 $user = '';
@@ -89,9 +89,11 @@ if (isset($_POST['user']) && isset($_POST['pass'])) {
             </div>
 
             <div class="login-form-group login-form-group-register">
-                <p>Chưa có tài khoản? <a href="">Đăng kí ngay</a></p>
+                <!-- <p>Chưa có tài khoản? <a href="">Đăng kí ngay</a></p>
+                <a href="">Quên mật khẩu</a> -->
             </div>
         </form>
     </div>
 </div>
-</body>
+
+
